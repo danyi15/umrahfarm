@@ -1,0 +1,14 @@
+/* styles.css */
+
+/* Add any custom styles below */
+
+body {
+    font-family: Arial, sans-serif; /* Example of a custom font */
+}
+
+/* You can also customize the button hover effect */
+button:hover {
+    background-color: #4caf50; /* Change to a lighter green on hover */
+}
+
+/* Additional custom styles can be added as needed */
