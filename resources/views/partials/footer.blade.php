@@ -7,7 +7,7 @@
         </div> --}}
 
         <!-- Keterangan Hak Cipta -->
-        <p class="text-sm">© 2024 UMRAH FARM. Semua Hak Dilindungi.</p>
+        <p class="text-sm"><p>&copy; {{ date('Y') }} Umrah Farm. All rights reserved.</p>
 
         <!-- Link Sosial Media (Opsional) -->
         <div class="space-x-4">

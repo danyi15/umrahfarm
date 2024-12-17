@@ -19,24 +19,32 @@
                 <h1 class="text-2xl font-bold">Tambah Ternak</h1>
             </div>
 
-            <form>
+            @if(session('success'))
+            <div class="bg-green-100 text-green-800 p-4 rounded-md mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
+
+
+            <form action="{{ route('record.ternak.submit') }}" method="POST">
+                @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Tag ID -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700" for="tag-id">Tag ID*</label>
-                        <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="tag-id" type="text" required/>
+                        <label class="block text-sm font-medium text-gray-700" for="tag_id">Tag ID*</label>
+                        <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="tag_id" type="text" required/>
                     </div>
 
                     <!-- Nama -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700" for="name">Nama*</label>
-                        <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="name" type="text" required/>
+                        <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="name" type="text" required/>
                     </div>
 
                     <!-- Jenis Hewan -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700" for="jenis-hewan">Jenis Hewan*</label>
-                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="jenis-hewan" required>
+                        <label class="block text-sm font-medium text-gray-700" for="jenis_hewan">Jenis Hewan*</label>
+                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="jenis_hewan" required>
                             <option value="">Pilih jenis hewan</option>
                             <option value="sapi">Sapi</option>
                             <option value="kambing">Kambing</option>
@@ -46,8 +54,8 @@
 
                     <!-- Jenis Kelamin -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700" for="jenis-kelamin">Jenis Kelamin*</label>
-                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="jenis-kelamin" required>
+                        <label class="block text-sm font-medium text-gray-700" for="jenis_kelamin">Jenis Kelamin*</label>
+                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="jenis_kelamin" required>
                             <option value="">Pilih jenis kelamin</option>
                             <option value="jantan">Jantan</option>
                             <option value="betina">Betina</option>
@@ -56,8 +64,8 @@
 
                     <!-- Lahir/Beli -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700" for="lahir-beli">Lahir/Beli*</label>
-                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="lahir-beli" required>
+                        <label class="block text-sm font-medium text-gray-700" for="lahirbeli">Lahir/Beli*</label>
+                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="lahir_beli" required>
                             <option value="">Pilih lahir/beli</option>
                             <option value="lahir">Lahir</option>
                             <option value="beli">Beli</option>
@@ -66,27 +74,27 @@
 
                     <!-- Berat Awal -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700" for="berat-awal">Berat Awal*</label>
+                        <label class="block text-sm font-medium text-gray-700" for="beratawal">Berat Awal*</label>
                         <div class="flex">
-                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="berat-awal" type="text" required/>
+                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="berat_awal" type="text" required/>
                             <span class="ml-2 mt-2">Kg</span>
                         </div>
                     </div>
 
                     <!-- Tanggal Lahir -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700" for="tanggal-lahir">Tanggal Lahir</label>
+                        <label class="block text-sm font-medium text-gray-700" for="tanggallahir">Tanggal Lahir</label>
                         <div class="relative">
-                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="tanggal-lahir" type="date"/>
+                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="tanggal_lahir" type="date"/>
                             <i class="fas fa-calendar-alt absolute top-3 right-3 text-gray-500"></i>
                         </div>
                     </div>
 
                     <!-- Tanggal Beli -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700" for="tanggal-beli">Tanggal Beli</label>
+                        <label class="block text-sm font-medium text-gray-700" for="tanggalbeli">Tanggal Beli</label>
                         <div class="relative">
-                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="tanggal-beli" type="date"/>
+                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="tanggal_beli" type="date"/>
                             <i class="fas fa-calendar-alt absolute top-3 right-3 text-gray-500"></i>
                         </div>
                     </div>
@@ -95,7 +103,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700" for="harga-beli">Harga Beli</label>
                         <div class="flex">
-                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" id="harga-beli" type="text" required/>
+                            <input class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" name="harga_beli" type="text" required/>
                             <span class="ml-2 mt-2">Rp</span>
                         </div>
                     </div>
@@ -112,5 +120,6 @@
     </div>
 
     @include('partials.footer')
+
 </body>
 </html>
